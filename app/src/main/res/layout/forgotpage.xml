@@ -41,111 +41,109 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Recipient Email"
-            android:layout_marginStart="32dp"
-            android:textSize="18sp"
+            android:layout_marginStart="@dimen/_32sdp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
             android:textColor="#2F3363"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <EditText
             android:id="@+id/editTextTextPersonName4"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:padding="8dp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_32sdp"
+            android:layout_marginEnd="@dimen/_32sdp"
+            android:padding="@dimen/_8sdp"
             android:textColor="#a2a4b5"
             android:ems="10"
             android:background="@drawable/edittext"
             android:inputType="textPersonName"
             android:hint="Enter your Email"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button"
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="50dp"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_marginStart="@dimen/_32sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_32sdp"
             android:background="@drawable/background_btn2"
             android:fontFamily="sans-serif-condensed-medium"
-            android:padding="4dp"
-            android:paddingStart="1dp"
+            android:padding="@dimen/_4sdp"
+            android:paddingStart="@dimen/_1sdp"
             android:text="Send OTP"
             android:textAlignment="center"
             android:textColor="#ffffff"
-            android:textSize="22sp"
+            android:textSize="@dimen/_22ssp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="@dimen/_32sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="OTP"
             android:textColor="#2F3363"
-            android:textSize="18sp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextTextPersonName6"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_32sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_32sdp"
             android:background="@drawable/edittext"
             android:ems="10"
             android:fontFamily="sans-serif-condensed-medium"
             android:hint="Enter the 4 digit OTP"
             android:inputType="textPersonName"
-            android:padding="8dp"
+            android:padding="@dimen/_8sdp"
             android:textColor="#a2a4b5"
-            android:textSize="16sp" />
+            android:textSize="@dimen/_16ssp" />
 
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button2"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:padding="4dp"
-            android:layout_marginTop="40dp"
+            android:layout_height="@dimen/_55sdp"
+            android:padding="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:text="Validate"
             android:fontFamily="sans-serif-condensed-medium"
-            android:drawableEnd="@drawable/circle"
             android:background="@drawable/background_btn2"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="32dp"
-            android:paddingStart="64dp"
+            android:layout_marginEnd="@dimen/_32sdp"
+            android:layout_marginStart="@dimen/_32sdp"
             style="@android:style/Widget.Button"
             android:textColor="#ffffff"
-            android:textSize="22sp"
+            android:textSize="@dimen/_22ssp"
             android:textStyle="bold"/>
 
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_30sdp"
             android:focusable="auto" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Resend OTP"
             android:textAlignment="center"
             android:textColor="#2f3363"
-            android:textSize="12dp" />
+            android:textSize="@dimen/_12sdp" />
 
     </LinearLayout>
 

@@ -4,116 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/backgroundcolour"
     tools:context=".MainActivity"
-    android:background="">
+    >
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.547"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.547"/>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/background_intro" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/white_line" />
+
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        android:layout_marginTop="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/women" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="Welcome back to your app"
-        android:textStyle="bold"
-        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-condensed-medium"
+        android:text="Welcome back to SmartPPD"
+        android:textAlignment="center"
         android:textColor="#ffffff"
-        android:textSize="40sp"
+        android:textSize="@dimen/_40ssp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.2"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:srcCompat="@drawable/logo" />
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button4"
+    <Button
+        android:id="@+id/loginmainbtn"
+        android:shadowColor="@color/black"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_height="@dimen/_55sdp"
+        android:layout_marginStart="@dimen/_32sdp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="@dimen/_32sdp"
         android:background="@drawable/background_btn"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="loginmainbtn"
         android:text="Login"
-        android:textSize="22dp"
-        android:textStyle="bold"
         android:textColor="#39632f"
-        android:fontFamily="sans-serif-condensed-medium"
-        style="@android:style/Widget.Button"
+        android:textSize="@dimen/_22sdp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button6"
+    <Button
+        android:id="@+id/signupmainbtn"
         style="@android:style/Widget.Button"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_height="@dimen/_55sdp"
+        android:layout_marginStart="@dimen/_32sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_32sdp"
         android:background="@drawable/background_btn"
         android:fontFamily="sans-serif-condensed-medium"
+        android:onClick="signupmainbtn"
         android:text="Signup"
         android:textColor="#39632f"
-        android:textSize="22dp"
-        android:layout_marginTop="16dp"
+        android:textSize="@dimen/_22sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/loginmainbtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

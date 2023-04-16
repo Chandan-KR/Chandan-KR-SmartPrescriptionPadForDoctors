@@ -1,30 +1,29 @@
 package com.example.smartprescriptionpadfordoctors;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-import com.example.smartprescriptionpadfordoctors.form.LoginActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
+  private Button loginmainbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Thread thread = new Thread(){
+        loginmainbtn =findViewById(R.id.loginmainbtn);
+        loginmainbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run(){
-                try {
-                    sleep(3*1000);
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                }catch (Exception e){
-
-                   e.printStackTrace();
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,signin.class);
+                startActivity(intent);
             }
-            super.run();
+        });
 
     }
-};thread.start();
+
+
+};
