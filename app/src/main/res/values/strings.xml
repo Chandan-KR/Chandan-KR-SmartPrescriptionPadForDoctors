@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Smart Prescription Pad For Doctors</string>
+    <string name="login">LOGIN</string>
+    <string name="welcome_back_to_smartppd">Welcome back to SmartPPD</string>
 </resources>

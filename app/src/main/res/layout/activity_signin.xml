@@ -68,9 +68,9 @@
             android:padding="@dimen/_8sdp"
             android:textColor="#a2a4b5"
             android:ems="10"
+            android:hint="Enter your email"
             android:background="@drawable/edittext"
-            android:inputType="textPersonName"
-            android:hint="Enter your Email"
+            android:inputType="textEmailAddress"
             android:textSize="@dimen/_16ssp"
             android:layout_marginTop="@dimen/_8sdp"
             android:fontFamily="sans-serif-condensed-medium"/>
@@ -95,10 +95,11 @@
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_32sdp"
             android:background="@drawable/edittext"
+            android:hint="Enter your password"
             android:ems="10"
             android:fontFamily="sans-serif-condensed-medium"
-            android:hint="Enter your Password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
+
             android:padding="@dimen/_8sdp"
             android:textColor="#a2a4b5"
             android:textSize="@dimen/_16ssp" />
@@ -123,7 +124,7 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/forgot_signin_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20sdp"
@@ -131,7 +132,8 @@
             android:text="Forgot password? reset now"
             android:textAlignment="center"
             android:textColor="#2f3363"
-            android:textSize="@dimen/_12sdp" />
+            android:textSize="@dimen/_12sdp"
+            android:onClick="forgot_signin_text"/>
 
         <ImageView
             android:id="@+id/imageView7"
