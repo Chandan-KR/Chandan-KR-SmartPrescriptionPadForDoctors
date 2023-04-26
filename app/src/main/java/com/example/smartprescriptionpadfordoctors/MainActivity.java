@@ -18,12 +18,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-            //login btn ---- navigating from first page to login page
+            //login btn --- taking btn id
             loginmainbtn =findViewById(R.id.loginmainbtn);
             loginmainbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
+                //login page navigation
                 public void onClick(View view) {
-                    Intent intent = new Intent(MainActivity.this,signin.class);
+                    Intent intent = new Intent(MainActivity.this, signIn.class);
                     startActivity(intent);
                 }
             });

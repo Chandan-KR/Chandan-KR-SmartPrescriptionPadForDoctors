@@ -59,13 +59,13 @@
             android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
             android:textColor="#2F3363"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/signup_Email"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginStart="@dimen/_32sdp"
             android:layout_marginEnd="@dimen/_32sdp"
             android:padding="@dimen/_8sdp"
@@ -76,6 +76,32 @@
             android:scrollHorizontally="true"
             android:hint="Enter your email"
             android:singleLine="true"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:fontFamily="sans-serif-condensed-medium"/>
+        <TextView
+            android:id="@+id/textViewPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone number"
+            android:layout_marginStart="@dimen/_32sdp"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
+            android:textColor="#2F3363"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:fontFamily="sans-serif-condensed-medium"/>
+        <EditText
+            android:id="@+id/signup_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_32sdp"
+            android:layout_marginEnd="@dimen/_32sdp"
+            android:padding="@dimen/_8sdp"
+            android:textColor="#a2a4b5"
+            android:ems="10"
+            android:background="@drawable/edittext"
+            android:inputType="phone"
+            android:hint="Enter your phone number"
             android:textSize="@dimen/_16ssp"
             android:layout_marginTop="@dimen/_8sdp"
             android:fontFamily="sans-serif-condensed-medium"/>
@@ -92,9 +118,9 @@
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <EditText
-            android:id="@+id/editTextTextPersonName6"
+            android:id="@+id/signup_username"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginStart="@dimen/_32sdp"
             android:layout_marginEnd="@dimen/_32sdp"
             android:padding="@dimen/_8sdp"
@@ -119,9 +145,9 @@
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <EditText
-            android:id="@+id/editTextTextPersonName8"
+            android:id="@+id/signup_password"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginStart="@dimen/_32sdp"
             android:layout_marginEnd="@dimen/_32sdp"
             android:padding="@dimen/_8sdp"
@@ -135,10 +161,11 @@
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <Button
-            android:id="@+id/signupcreatebtn"
+            android:id="@+id/signup_button"
+            android:onClick="signup_button"
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_45sdp"
             android:layout_marginStart="@dimen/_32sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_32sdp"
@@ -153,13 +180,13 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/already_ac_signin"
+            android:id="@+id/loginRedirectText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_3sdp"
             android:fontFamily="sans-serif-condensed-medium"
             android:minHeight="48dp"
-            android:onClick="already_ac_signin"
+            android:onClick="loginRedirectText"
             android:text="Already have an account?sign in"
             android:textAlignment="center"
             android:textColor="#2f3363"
@@ -169,7 +196,7 @@
             android:id="@+id/imageView7"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_3sdp"
             app:srcCompat="@drawable/googleicon" />
 
     </LinearLayout>

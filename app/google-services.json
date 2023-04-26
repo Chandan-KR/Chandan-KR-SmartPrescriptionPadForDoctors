@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "262996520856",
+    "firebase_url": "https://smartppd-2a51f-default-rtdb.firebaseio.com",
+    "project_id": "smartppd-2a51f",
+    "storage_bucket": "smartppd-2a51f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262996520856:android:b37c7b5bef19df598b45ed",
+        "android_client_info": {
+          "package_name": "com.example.smartprescriptionpadfordoctors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "262996520856-gom32fjma1nompctotnnf2vjullbfouv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPzEgvpxZwHPQg6qC7gucHYi95-DQWxsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "262996520856-gom32fjma1nompctotnnf2vjullbfouv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

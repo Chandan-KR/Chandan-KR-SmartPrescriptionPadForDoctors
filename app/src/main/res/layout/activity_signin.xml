@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EBEBEB"
-    tools:context=".signin">
+    tools:context=".signIn">
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
@@ -56,13 +56,13 @@
             android:textSize="@dimen/_18sdp"
             android:textStyle="bold"
             android:textColor="#2F3363"
-            android:layout_marginTop="@dimen/_32sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/signin_email"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_marginStart="@dimen/_32sdp"
             android:layout_marginEnd="@dimen/_32sdp"
             android:padding="@dimen/_8sdp"
@@ -75,12 +75,14 @@
             android:layout_marginTop="@dimen/_8sdp"
             android:fontFamily="sans-serif-condensed-medium"/>
 
+
+
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_32sdp"
-            android:layout_marginTop="@dimen/_32sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Password"
             android:textColor="#2F3363"
@@ -88,9 +90,9 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName6"
+            android:id="@+id/signin_password"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_marginStart="@dimen/_32sdp"
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_32sdp"
@@ -105,12 +107,14 @@
             android:textSize="@dimen/_16ssp" />
 
 
+
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
+            android:id="@+id/signin_button"
+            android:onClick="signin_button"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_55sdp"
             android:padding="@dimen/_4sdp"
-            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:text="Sign in"
             android:fontFamily="sans-serif-condensed-medium"
             android:drawableEnd="@drawable/circle"

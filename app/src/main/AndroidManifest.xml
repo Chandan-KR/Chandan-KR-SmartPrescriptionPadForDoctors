@@ -3,15 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartPrescriptionPadForDoctors"
-        tools:targetApi="31">
+        tools:targetApi="tiramisu">
+        <activity
+            android:name=".main_nav"
+            android:exported="false"
+            android:label="@string/title_activity_main_nav"
+            android:theme="@style/Theme.SmartPrescriptionPadForDoctors.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".forgot"
             android:exported="false">
@@ -27,14 +38,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".signin"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".LoginActivity"
+            android:name=".signIn"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
