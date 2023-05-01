@@ -47,7 +47,7 @@
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/email_field"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginStart="@dimen/_32sdp"
@@ -63,7 +63,7 @@
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
+            android:id="@+id/send_otp_button"
             style="@android:style/Widget.Button"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_55sdp"
@@ -92,8 +92,9 @@
             android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
+
         <EditText
-            android:id="@+id/editTextTextPersonName6"
+            android:id="@+id/otp_field"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginStart="@dimen/_32sdp"
@@ -108,9 +109,8 @@
             android:textColor="#a2a4b5"
             android:textSize="@dimen/_16ssp" />
 
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
+            android:id="@+id/verify_otp_button"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_55sdp"
             android:padding="@dimen/_1sdp"
@@ -126,7 +126,7 @@
             android:textStyle="bold"/>
 
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/progress_bar"
             style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"

@@ -1,4 +1,4 @@
-package com.example.smartprescriptionpadfordoctors.ui.gallery;
+package com.example.smartprescriptionpadfordoctors.ui.history;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.smartprescriptionpadfordoctors.databinding.FragmentGalleryBinding;
+import com.example.smartprescriptionpadfordoctors.databinding.FragmentHistoryBinding;
 
-public class GalleryFragment extends Fragment {
+public class historyFragment extends Fragment {
 
-    private FragmentGalleryBinding binding;
+    private FragmentHistoryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
+        historyViewModel slideshowViewModel =
+                new ViewModelProvider(this).get(historyViewModel.class);
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = FragmentHistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textHistory;
+        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

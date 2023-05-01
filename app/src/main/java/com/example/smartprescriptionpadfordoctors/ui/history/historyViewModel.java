@@ -1,16 +1,16 @@
-package com.example.smartprescriptionpadfordoctors.ui.gallery;
+package com.example.smartprescriptionpadfordoctors.ui.history;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class historyViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public historyViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is history fragment");
     }
 
     public LiveData<String> getText() {

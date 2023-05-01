@@ -1,8 +1,11 @@
 package com.example.smartprescriptionpadfordoctors;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -20,6 +23,7 @@ public class main_nav extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainNavBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,7 @@ public class main_nav extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_history, R.id.nav_profile)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main_nav);
@@ -55,6 +59,30 @@ public class main_nav extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_nav, menu);
         return true;
     }
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.nav_home:
+                break;
+
+            case R.id.nav_history:
+                // Do something for history menu
+                return true;
+
+            case  R.id.nav_profile:
+                // Do something for profile menu
+                return true;
+
+            case R.id.nav_logout:
+                
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 
     @Override
     public boolean onSupportNavigateUp() {
