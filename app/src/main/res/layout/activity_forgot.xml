@@ -74,56 +74,13 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:padding="@dimen/_4sdp"
             android:paddingStart="@dimen/_1sdp"
-            android:text="Send OTP"
+            android:text="Send verification link"
             android:textAlignment="center"
             android:textColor="#ffffff"
             android:textSize="@dimen/_22ssp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_32sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:text="OTP"
-            android:textColor="#2F3363"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold" />
 
-
-        <EditText
-            android:id="@+id/otp_field"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginStart="@dimen/_32sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_32sdp"
-            android:background="@drawable/edittext"
-            android:ems="10"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:hint="Enter 4 digit OTP"
-            android:inputType="number"
-            android:padding="@dimen/_8sdp"
-            android:textColor="#a2a4b5"
-            android:textSize="@dimen/_16ssp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/verify_otp_button"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_55sdp"
-            android:padding="@dimen/_1sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Validate"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:background="@drawable/background_btn2"
-            android:layout_marginEnd="@dimen/_32sdp"
-            android:layout_marginStart="@dimen/_32sdp"
-            style="@android:style/Widget.Button"
-            android:textColor="#ffffff"
-            android:textSize="@dimen/_22ssp"
-            android:textStyle="bold"/>
 
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -138,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_15sdp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Resend OTP"
+            android:text="Resend"
             android:textAlignment="center"
             android:textColor="#2f3363"
             android:textSize="@dimen/_12sdp" />

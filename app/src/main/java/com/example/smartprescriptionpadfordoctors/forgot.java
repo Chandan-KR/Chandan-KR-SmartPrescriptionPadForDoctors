@@ -3,7 +3,6 @@ package com.example.smartprescriptionpadfordoctors;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,40 +43,42 @@ public class forgot extends AppCompatActivity {
                     }
                    else {
                      checkAndVerifyEmail(email);
-
                     }
                 }
             });
         }
-    public static void checkAndVerifyEmail(String email) {
+    public  void checkAndVerifyEmail(String email) {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.fetchSignInMethodsForEmail(email).addOnCompleteListener(task -> {
             boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
 
             if (isNewUser) {
-                Log.d(TAG, "New user,please signUp first");
+                Toast.makeText(forgot.this,"New user,please signUp first",Toast.LENGTH_SHORT).show();
+
 
             } else {
-                Log.d(TAG, "Email already exists.");
+                Toast.makeText(forgot.this,"Email already exists.",Toast.LENGTH_SHORT).show();
                 sendVerificationEmail();
             }
         });
     }
-    private static void sendVerificationEmail() {
+    private void sendVerificationEmail() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user != null) {
             user.sendEmailVerification().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    Log.d(TAG, "Verification email sent you can now reset your password");
-
+                    Toast.makeText(forgot.this,"Verification email sent you can now reset your password",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(forgot.this,change_password.class);
+                    startActivity(intent);
                 } else {
-                    Log.w(TAG, "Error sending verification email.", task.getException());
+                    Toast.makeText(forgot.this,"Error sending verification email.",Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
-            Log.e(TAG, "No user found.");
+            Toast.makeText(forgot.this,"No user found.",Toast.LENGTH_SHORT).show();
+
         }
     }
     }
