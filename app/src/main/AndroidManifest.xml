@@ -21,13 +21,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".createPassword"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".main_nav"
             android:exported="false"
             android:label="@string/title_activity_main_nav"

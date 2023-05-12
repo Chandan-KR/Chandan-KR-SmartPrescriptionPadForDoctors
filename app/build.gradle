@@ -54,6 +54,7 @@ dependencies {
 
     //Responsive for sp s
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
+    implementation 'io.penly:penly:2.0.0'
 
 
 
