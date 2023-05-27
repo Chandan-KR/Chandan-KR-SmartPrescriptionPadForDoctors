@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EBEBEB"
-    tools:context=".signup">
+    tools:context=".ui.profile.profileFragment">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -144,27 +144,17 @@
             android:padding="@dimen/_8sdp"
             android:textColor="#a2a4b5"
             android:textSize="@dimen/_16ssp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            />
 
         <Button
-            android:id="@+id/signup_button"
-            android:onClick="signup_button"
-            style="@android:style/Widget.Button"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_45sdp"
-            android:layout_marginStart="@dimen/_32sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_32sdp"
-            android:background="@drawable/background_btn2"
-            android:drawableEnd="@drawable/circle"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:padding="@dimen/_4sdp"
-            android:paddingStart="@dimen/_20sdp"
-            android:text="Edit"
-            android:textColor="#ffffff"
-            android:textSize="@dimen/_22ssp"
-            android:textStyle="bold" />
-
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/pen"
+            android:shadowColor="@color/white"
+            android:layout_marginHorizontal="@dimen/_243sdp"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/black" />
 
 
     </LinearLayout>
