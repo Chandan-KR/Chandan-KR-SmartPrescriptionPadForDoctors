@@ -1,37 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_2sdp"
+    android:background="@color/black">
 
+    <!-- Header Bar -->
     <LinearLayout
-        android:id="@+id/settings_layout"
+        android:id="@+id/headerBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_2sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:background="#e8e4e3"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:background="#ffffff"
         android:padding="8dp">
 
-        <Button
-            android:id="@+id/pen_settings_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pen Settings"/>
+        <!-- Header Bar content -->
 
-        <Button
-            android:id="@+id/eraser_button"
+        <TextView
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/logo"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/hospitalName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Eraser"/>
+            android:layout_marginLeft="@dimen/_65sdp"
+            android:text="Hospital name"
+            android:textColor="#FFBB86FC"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:text="\nDoctor Name and address"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:textColor="#FFBB86FC"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold" />
+
+        <!-- Add additional views to the header bar if needed -->
+
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/handwriting_layout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_above="@id/settings_layout"
-        android:background="#f8f8f8"/>
+        android:layout_below="@id/headerBar"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#FFFFFF"
+        android:scrollbars="vertical">
+
+        <!-- Content Container -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/dateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:text="Date and Time"
+                android:layout_alignParentEnd="true"
+                android:textColor="#FFBB86FC"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/patientId"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:text="Patient ID:"
+                android:textColor="#FFBB86FC"
+                android:textSize="@dimen/_10sdp"/>
+            <EditText
+                android:id="@+id/patientIdEdit"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/patientId"
+                style="@android:style/TextAppearance"/>
+            <EditText
+                android:id="@+id/patientname"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/patientIdEdit"
+                style="@android:style/TextAppearance"/>
+            <EditText
+                android:id="@+id/age"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_below="@+id/patientIdEdit"
+                android:layout_toEndOf="@+id/patientname"
+                style="@android:style/TextAppearance"/>
+            <EditText
+                android:id="@+id/Gender"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_below="@+id/patientIdEdit"
+                android:layout_toEndOf="@+id/age"
+                style="@android:style/TextAppearance"/>
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

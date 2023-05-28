@@ -56,7 +56,7 @@
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <TextView
-            android:id="@+id/signup_Email"
+            android:id="@+id/profile_username"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:layout_marginStart="@dimen/_32sdp"
@@ -82,7 +82,7 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:fontFamily="sans-serif-condensed-medium"/>
         <TextView
-            android:id="@+id/signup_phone"
+            android:id="@+id/profile_Email"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:layout_marginStart="@dimen/_32sdp"
@@ -107,7 +107,7 @@
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <TextView
-            android:id="@+id/signup_username"
+            android:id="@+id/profile_phone"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:layout_marginStart="@dimen/_32sdp"
@@ -132,7 +132,7 @@
             android:fontFamily="sans-serif-condensed-medium"/>
 
         <EditText
-            android:id="@+id/signup_password"
+            android:id="@+id/hospitalName"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:layout_marginStart="@dimen/_32sdp"
