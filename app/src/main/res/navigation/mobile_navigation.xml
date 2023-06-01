@@ -22,4 +22,5 @@
         android:name="com.example.smartprescriptionpadfordoctors.ui.history.historyFragment"
         android:label="@string/menu_history"
         tools:layout="@layout/fragment_history" />
+
 </navigation>
