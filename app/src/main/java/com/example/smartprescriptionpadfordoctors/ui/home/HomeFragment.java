@@ -1,14 +1,21 @@
 package com.example.smartprescriptionpadfordoctors.ui.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintManager;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -25,22 +32,40 @@ public class HomeFragment extends Fragment {
     private TextView dateTimeTextView;
     private Handler handler;
     private Runnable updateTimeRunnable;
+    private Button printButton;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
-
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        return binding.getRoot();
+    }
 
-        dateTimeTextView = root.findViewById(R.id.dateTime);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        dateTimeTextView = view.findViewById(R.id.dateTime);
 
         // Initialize the handler
         handler = new Handler(Looper.getMainLooper());
 
-        return root;
+        printButton = view.findViewById(R.id.saveAndPrintBtn);
+        printButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the print manager
+                PrintManager printManager = (PrintManager) requireActivity().getSystemService(Context.PRINT_SERVICE);
+
+                // Set the print job name
+                String jobName = getString(R.string.app_name) + " Document";
+
+                // Start the print job
+                printManager.print(jobName, new MyPrintDocumentAdapter(requireContext(), binding.prescription), null);
+            }
+        });
+
     }
+
 
     @Override
     public void onResume() {
@@ -82,7 +107,6 @@ public class HomeFragment extends Fragment {
 
         dateTimeTextView.setText(currentDateTime);
     }
-
 
     @Override
     public void onDestroyView() {

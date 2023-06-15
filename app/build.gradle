@@ -58,6 +58,12 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    //for print pdf
+    implementation 'com.itextpdf:itext7-core:7.1.16'
+
+
+
+
 
 }
 configurations {
