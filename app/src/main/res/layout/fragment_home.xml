@@ -68,6 +68,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <!-- Existing prescription views -->
+
             <TextView
                 android:id="@+id/dateTime"
                 android:layout_width="wrap_content"
@@ -77,6 +80,7 @@
                 android:textColor="#FFBB86FC"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/patientId"
                 android:layout_width="wrap_content"
@@ -126,6 +130,15 @@
                 android:layout_toEndOf="@+id/age"
                 android:minHeight="48dp"
                 tools:ignore="SpeakableTextPresentCheck" />
+
+            <!-- Custom view for writing -->
+            <com.example.smartprescriptionpadfordoctors.ui.home.WritingView
+                android:id="@+id/writingView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/Gender"
+                android:background="@android:color/transparent" />
+
         </RelativeLayout>
 
     </ScrollView>
@@ -148,7 +161,5 @@
             android:background="@drawable/background_btn2"/>
 
     </LinearLayout>
-
-
 
 </RelativeLayout>

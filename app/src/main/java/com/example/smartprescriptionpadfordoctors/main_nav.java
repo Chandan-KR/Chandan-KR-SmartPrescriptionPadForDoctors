@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -28,6 +29,9 @@ public class main_nav extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainNavBinding binding;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private Button penButton;
+    private Button eraserButton;
+    private String drawingMode = "pen";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +41,44 @@ public class main_nav extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMainNav.toolbar);
+
+        penButton = findViewById(R.id.penButton);
+        eraserButton = findViewById(R.id.eraserButton);
+
+        penButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawingMode = "pen";
+                // Enable writing view
+                // Code to enable the writing view goes here
+                Snackbar.make(v, "Pen selected", Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
+        eraserButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawingMode = "eraser";
+                // Enable eraser
+                // Code to enable the eraser goes here
+                Snackbar.make(v, "Eraser selected", Snackbar.LENGTH_SHORT).show();
+            }
+        });
         binding.appBarMainNav.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                // Show the pen, eraser, and save and print buttons
+                if (penButton.getVisibility() == View.VISIBLE) {
+                    // Hide the buttons
+                    penButton.setVisibility(View.GONE);
+                    eraserButton.setVisibility(View.GONE);
+                    //saveAndPrintButton.setVisibility(View.GONE);
+                } else {
+                    // Show the buttons
+                    penButton.setVisibility(View.VISIBLE);
+                    eraserButton.setVisibility(View.VISIBLE);
+                    //saveAndPrintButton.setVisibility(View.VISIBLE);
+                }
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -80,7 +117,7 @@ public class main_nav extends AppCompatActivity {
                 return true;
 
             case R.id.nav_logout:
-                    logout();
+                logout();
                 return true;
 
             case R.id.nav_logout1:

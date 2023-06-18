@@ -26,11 +26,13 @@ public class MyPrintDocumentAdapter extends PrintDocumentAdapter {
     private Context context;
     private View contentLayout;
     private PrintAttributes printAttributes;
+    private String docname;
 
 
-    public MyPrintDocumentAdapter(Context context, View contentLayout) {
+    public MyPrintDocumentAdapter(Context context, View contentLayout,String docname) {
         this.context = context;
         this.contentLayout = contentLayout;
+        this.docname = docname;
     }
 
     @Override
@@ -41,7 +43,7 @@ public class MyPrintDocumentAdapter extends PrintDocumentAdapter {
             return;
         }
 
-        PrintDocumentInfo.Builder builder = new PrintDocumentInfo.Builder("Patient ID");
+        PrintDocumentInfo.Builder builder = new PrintDocumentInfo.Builder("Patient_ID_"+docname);
         builder.setContentType(PrintDocumentInfo.CONTENT_TYPE_DOCUMENT)
                 .setPageCount(PrintDocumentInfo.PAGE_COUNT_UNKNOWN)
                 .build();

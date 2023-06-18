@@ -60,9 +60,7 @@ dependencies {
 
     //for print pdf
     implementation 'com.itextpdf:itext7-core:7.1.16'
-
-
-
+    testImplementation 'junit:junit:4.12'
 
 
 }
