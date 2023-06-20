@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.Toast;
+import com.example.smartprescriptionpadfordoctors.ui.home.WritingView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -31,6 +32,7 @@ public class main_nav extends AppCompatActivity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private Button penButton;
     private Button eraserButton;
+    public WritingView writingView;
     private String drawingMode = "pen";
 
     @Override
@@ -44,14 +46,21 @@ public class main_nav extends AppCompatActivity {
 
         penButton = findViewById(R.id.penButton);
         eraserButton = findViewById(R.id.eraserButton);
+        writingView = findViewById(R.id.writingView);
+
 
         penButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawingMode = "pen";
+
                 // Enable writing view
+                writingView.setErasing(false);
                 // Code to enable the writing view goes here
                 Snackbar.make(v, "Pen selected", Snackbar.LENGTH_SHORT).show();
+                // Hide the buttons
+                penButton.setVisibility(View.GONE);
+                eraserButton.setVisibility(View.GONE);
             }
         });
 
@@ -59,11 +68,15 @@ public class main_nav extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 drawingMode = "eraser";
-                // Enable eraser
-                // Code to enable the eraser goes here
+                writingView.setErasing(true);
                 Snackbar.make(v, "Eraser selected", Snackbar.LENGTH_SHORT).show();
+                // Hide the buttons
+                penButton.setVisibility(View.GONE);
+                eraserButton.setVisibility(View.GONE);
             }
         });
+
+
         binding.appBarMainNav.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

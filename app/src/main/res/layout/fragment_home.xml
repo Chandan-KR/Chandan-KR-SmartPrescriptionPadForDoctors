@@ -98,6 +98,13 @@
                 android:layout_toEndOf="@+id/patientId"
                 android:minHeight="48dp"
                 tools:ignore="SpeakableTextPresentCheck" />
+            <Button
+                android:id="@+id/fetchbtn"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_80sdp"
+                android:text="Fetch"
+                android:background="@drawable/done_button_bg"/>
 
             <EditText
                 android:id="@+id/patientname"

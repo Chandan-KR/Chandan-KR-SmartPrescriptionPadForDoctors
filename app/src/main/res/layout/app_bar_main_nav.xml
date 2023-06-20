@@ -29,16 +29,16 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/ic_baseline_create_24"
+        app:srcCompat="@drawable/ic_baseline_menu_open_24"
         android:onClick="onFabClicked" />
 
     <!-- Pen Button -->
     <Button
         android:id="@+id/penButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_12sdp"
-        android:text="Pen"
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="@dimen/_10sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@drawable/pen"
         android:visibility="gone"
         app:layout_anchor="@id/fab"
         app:layout_anchorGravity="top|end" />
@@ -46,10 +46,13 @@
     <!-- Eraser Button -->
     <Button
         android:id="@+id/eraserButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_12sdp"
-        android:text="Eraser"
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_7sdp"
+        android:background="@drawable/eraser"
         android:visibility="gone"
         app:layout_anchor="@id/penButton"
         app:layout_anchorGravity="top|end" />
