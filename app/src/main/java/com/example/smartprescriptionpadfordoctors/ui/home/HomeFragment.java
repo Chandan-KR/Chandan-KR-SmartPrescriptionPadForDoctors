@@ -1,13 +1,18 @@
 package com.example.smartprescriptionpadfordoctors.ui.home;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.net.Uri;
 import android.os.Bundle;
 import android.print.PrintManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +34,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -83,47 +89,45 @@ public class HomeFragment extends Fragment {
                 // Extract the content from the prescription view
                 String prescriptionContent = extractPrescriptionContent(binding.prescription);
 
-                // Save the prescription content to Firestore
+                // Save the prescription content to Firestore and Firebase Storage
                 saveContentToFirestore(docName, prescriptionContent);
+                //saveImageToFirebaseStorage(docName);
             }
         });
 
-        Button fetchButton = view.findViewById(R.id.fetchbtn);
-        fetchButton.setOnClickListener(new View.OnClickListener() {
+        docname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View v) {
-                String docName = docname.getText().toString().trim();
-                if (!docName.isEmpty()) {
-                    fetchPatientDetails(docName);
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String docName = docname.getText().toString().trim();
+                    if (!docName.isEmpty()) {
+                        fetchPatientDetails(docName);
+                    }
                 }
             }
         });
     }
 
     private void fetchPatientDetails(String docName) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://smartppd-2a51f-default-rtdb.firebaseio.com/prescriptions");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("prescriptions");
 
-        Query query = databaseReference.orderByChild("docName").equalTo(docName);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child(docName).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        String patientName = dataSnapshot.child("PatientName").getValue(String.class);
-                        String age = dataSnapshot.child("Age").getValue(String.class);
-                        String gender = dataSnapshot.child("Gender").getValue(String.class);
+                    String patientName = dataSnapshot.child("Patient name").getValue(String.class);
+                    Long age = dataSnapshot.child("Age").getValue(Long.class);
+                    String gender = dataSnapshot.child("Gender").getValue(String.class);
+
+                    String ageString = (age != null) ? String.valueOf(age) : "";
 
 
-                        System.out.println("Patient Name: " + patientName);
-                        System.out.println("Age: " + age);
-                        System.out.println("Gender: " + gender);
-                        Toast.makeText(getContext(), "Fetched ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Fetched", Toast.LENGTH_SHORT).show();
 
-                        // Set the retrieved values to the corresponding TextViews
-                        binding.patientname.setText(patientName);
-                        binding.age.setText(age);
-                        binding.Gender.setText(gender);
-                    }
+                    // Set the retrieved values to the corresponding TextViews
+                    binding.patientname.setText(patientName);
+                    binding.age.setText(ageString);
+                    binding.Gender.setText(gender);
                 } else {
                     // Data not found in Realtime Database, try fetching from Firestore
                     fetchPatientDetailsFromFirestore(docName);
@@ -140,6 +144,8 @@ public class HomeFragment extends Fragment {
 
 
 
+
+
     private void fetchPatientDetailsFromFirestore(String docName) {
         DocumentReference documentReference = firestore.collection("prescriptions").document(docName);
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -150,9 +156,9 @@ public class HomeFragment extends Fragment {
                     String age = documentSnapshot.getString("Age");
                     String gender = documentSnapshot.getString("Gender");
 
-                    System.out.println("Patient Name: " + patientName);
-                    System.out.println("Age: " + age);
-                    System.out.println("Gender: " + gender);
+                    binding.patientname.setText(patientName);
+                    binding.age.setText(age);
+                    binding.Gender.setText(gender);
 
                 } else {
                     Toast.makeText(getContext(), "Patient details not found", Toast.LENGTH_SHORT).show();
@@ -229,6 +235,75 @@ public class HomeFragment extends Fragment {
                     }
                 });
     }
+//    private void saveImageToFirebaseStorage(String docName) {
+//        RelativeLayout contentContainer = binding.prescriptionContainer;
+//        Bitmap containerBitmap = getBitmapFromView(contentContainer);
+//
+//        FirebaseStorage storage = FirebaseStorage.getInstance();
+//        StorageReference storageRef = storage.getReference();
+//
+//        String filename = docName + ".jpg";
+//        StorageReference imageRef = storageRef.child(filename);
+//
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        containerBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//        byte[] data = baos.toByteArray();
+//
+//        UploadTask uploadTask = imageRef.putBytes(data);
+//        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                    @Override
+//                    public void onSuccess(Uri uri) {
+//                        String imageUrl = uri.toString();
+//                        saveImageUrlToFirestore(docName, imageUrl);
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        // Error occurred while retrieving the download URL
+//                        Log.e("FirebaseStorage", "Failed to retrieve download URL: " + e.getMessage());
+//                    }
+//                });
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                // Error occurred while uploading the image
+//                Log.e("FirebaseStorage", "Failed to upload image: " + e.getMessage());
+//            }
+//        });
+//    }
+//
+//    private void saveImageUrlToFirestore(String docName, String imageUrl) {
+//        firestore.collection("prescriptions").document(docName)
+//                .update("imageUrl", imageUrl)
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        // Handle successful save of image URL
+//                        Toast.makeText(getContext(), "Image URL saved to Firestore", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        // Handle failure
+//                        Toast.makeText(getContext(), "Failed to save image URL to Firestore", Toast.LENGTH_SHORT).show();
+//                        Log.e("Firestore", "Failed to save image URL: " + e.getMessage());
+//                    }
+//                });
+//    }
+//
+//    private Bitmap getBitmapFromView(View view) {
+//        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+//        Canvas canvas = new Canvas(bitmap);
+//        view.draw(canvas);
+//        return bitmap;
+//    }
+
+
 
     @Override
     public void onResume() {
