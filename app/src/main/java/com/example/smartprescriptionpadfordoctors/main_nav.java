@@ -15,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -35,6 +36,7 @@ public class main_nav extends AppCompatActivity {
     public WritingView writingView;
     private String drawingMode = "pen";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,9 @@ public class main_nav extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMainNav.toolbar);
+
+        // Create an instance of the shared view model
+        SharedViewModel sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
 
         penButton = findViewById(R.id.penButton);
         eraserButton = findViewById(R.id.eraserButton);

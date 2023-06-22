@@ -65,6 +65,8 @@ public class HomeFragment extends Fragment {
         firestore = FirebaseFirestore.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("prescriptions");
 
+        TextView otherFragmentTextView = view.findViewById(R.id.hospitalName);
+
         printButton = view.findViewById(R.id.saveAndPrintBtn);
         printButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +108,9 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+
+
+
     }
 
     private void fetchPatientDetails(String docName) {

@@ -4,8 +4,8 @@ import static android.content.ContentValues.TAG;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.service.autofill.Field;
-import android.util.FloatProperty;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +19,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.smartprescriptionpadfordoctors.R;
+import com.example.smartprescriptionpadfordoctors.SharedViewModel;
 import com.example.smartprescriptionpadfordoctors.databinding.FragmentProfileBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.net.HttpCookie;
 
@@ -32,7 +34,14 @@ public class profileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private TextView usernameTextView;
+    private TextView emailTextView;
+    private TextView phoneTextView;
+    private EditText hospitalName;
+
+
+    private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,39 +52,59 @@ public class profileFragment extends Fragment {
 
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        // Find the TextView by ID from the inflated layout
-        TextView usernameTextView = rootView.findViewById(R.id.profile_username);
-        TextView emailTextView = rootView.findViewById(R.id.profile_Email);
-        TextView phoneTextView = rootView.findViewById(R.id.profile_phone);
-       // TextView hospitalNameTextView = rootView.findViewById(R.id.hospitalName);
 
-        db.collection("users")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                // Retrieve the user's data from the document
-                                String username = document.getString("username");
-                                String email = document.getString("email");
-                                String phoneNumber = document.getString("phoneNumber");
+        // Initialize Firebase instances
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
-                                // Do something with the retrieved user data
-                                usernameTextView.setText(username);
-                                emailTextView.setText(email);
-                                phoneTextView.setText(phoneNumber);
-                                //hospitalNameTextView.setText();
-                            }
-                        } else {
-                            // Handle the error
-                            Log.d(TAG, "Error getting user document: " + task.getException());
-                        }
-                    }
-                });
+        // Find the TextViews and EditText by ID from the inflated layout
+        usernameTextView = rootView.findViewById(R.id.profile_username);
+        emailTextView = rootView.findViewById(R.id.profile_Email);
+        phoneTextView = rootView.findViewById(R.id.profile_phone);
+        EditText hospitalNameEditText = rootView.findViewById(R.id.hospitalName);
 
+        // Fetch and display the user's details
+        fetchUserDetails();
 
         return root;
+    }
+
+    private void fetchUserDetails() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String userId = user.getUid();
+
+            FirebaseFirestore.getInstance().collection("users").document(userId)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document != null && document.exists()) {
+                                    // Retrieve the user's data from the document
+                                    String username = document.getString("username");
+                                    String email = document.getString("email");
+                                    String phoneNumber = document.getString("phone");
+
+                                    // Update the TextViews with the retrieved user data
+                                    binding.profileUsername.setText(username);
+                                    binding.profileEmail.setText(email);
+                                    binding.profilePhone.setText(phoneNumber);
+                                    System.out.println(username);
+                                    System.out.println(email);
+                                    System.out.println(phoneNumber);
+
+                                } else {
+                                    Log.d(TAG, "User document doesn't exist");
+                                }
+                            } else {
+                                // Handle the error
+                                Log.d(TAG, "Error getting user document: " + task.getException());
+                            }
+                        }
+                    });
+        }
     }
 
     @Override
