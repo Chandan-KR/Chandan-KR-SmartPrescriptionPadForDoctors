@@ -8,8 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
-import android.widget.Toast;
-import com.example.smartprescriptionpadfordoctors.ui.home.WritingView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -33,7 +31,6 @@ public class main_nav extends AppCompatActivity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private Button penButton;
     private Button eraserButton;
-    public WritingView writingView;
     private String drawingMode = "pen";
 
 
@@ -49,56 +46,7 @@ public class main_nav extends AppCompatActivity {
         // Create an instance of the shared view model
         SharedViewModel sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
 
-        penButton = findViewById(R.id.penButton);
-        eraserButton = findViewById(R.id.eraserButton);
-        writingView = findViewById(R.id.writingView);
 
-
-        penButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawingMode = "pen";
-
-                // Enable writing view
-                writingView.setErasing(false);
-                // Code to enable the writing view goes here
-                Snackbar.make(v, "Pen selected", Snackbar.LENGTH_SHORT).show();
-                // Hide the buttons
-                penButton.setVisibility(View.GONE);
-                eraserButton.setVisibility(View.GONE);
-            }
-        });
-
-        eraserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawingMode = "eraser";
-                writingView.setErasing(true);
-                Snackbar.make(v, "Eraser selected", Snackbar.LENGTH_SHORT).show();
-                // Hide the buttons
-                penButton.setVisibility(View.GONE);
-                eraserButton.setVisibility(View.GONE);
-            }
-        });
-
-
-        binding.appBarMainNav.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Show the pen, eraser, and save and print buttons
-                if (penButton.getVisibility() == View.VISIBLE) {
-                    // Hide the buttons
-                    penButton.setVisibility(View.GONE);
-                    eraserButton.setVisibility(View.GONE);
-                    //saveAndPrintButton.setVisibility(View.GONE);
-                } else {
-                    // Show the buttons
-                    penButton.setVisibility(View.VISIBLE);
-                    eraserButton.setVisibility(View.VISIBLE);
-                    //saveAndPrintButton.setVisibility(View.VISIBLE);
-                }
-            }
-        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
