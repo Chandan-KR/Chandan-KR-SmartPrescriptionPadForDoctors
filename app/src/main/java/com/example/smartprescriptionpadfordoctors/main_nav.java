@@ -3,16 +3,18 @@ package com.example.smartprescriptionpadfordoctors;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Menu;
-import android.widget.Button;
+import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -29,9 +31,7 @@ public class main_nav extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainNavBinding binding;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    private Button penButton;
-    private Button eraserButton;
-    private String drawingMode = "pen";
+
 
 
     @Override
@@ -58,7 +58,10 @@ public class main_nav extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main_nav);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -75,10 +78,9 @@ public class main_nav extends AppCompatActivity {
                 break;
 
             case R.id.nav_history:
-                // Do something for history menu
                 return true;
 
-            case  R.id.nav_profile:
+            case R.id.nav_profile:
                 // Do something for profile menu
                 return true;
 
@@ -88,11 +90,9 @@ public class main_nav extends AppCompatActivity {
 
             case R.id.nav_logout1:
                 logout();
-
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
     @Override
@@ -126,4 +126,5 @@ public class main_nav extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
 }

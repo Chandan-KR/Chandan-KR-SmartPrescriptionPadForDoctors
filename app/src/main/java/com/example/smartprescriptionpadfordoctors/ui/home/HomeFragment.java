@@ -77,7 +77,6 @@ public class HomeFragment extends Fragment {
         TextView otherFragmentTextView = view.findViewById(R.id.hospitalName);
 
         printButton = view.findViewById(R.id.saveAndPrintBtn);
-        download = view.findViewById(R.id.downloadbtn);
         printButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,15 +109,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
-        download.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String docName = docname.getText().toString().trim();
-                // Fetch patient details from Firestore and initiate download
-                fetchAndWritePatientPrescriptionsToExcel();
 
-            }
-        });
 
 
         docname.setOnFocusChangeListener(new View.OnFocusChangeListener() {

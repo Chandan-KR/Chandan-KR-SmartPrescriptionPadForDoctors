@@ -168,16 +168,6 @@
             android:text="Save and Print"
             android:background="@drawable/background_btn2"/>
 
-        <Button
-            android:id="@+id/downloadbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/saveAndPrintBtn"
-            android:background="@drawable/background_btn2"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:text="Download" />
-
-
     </LinearLayout>
 
 </RelativeLayout>
